@@ -1,0 +1,38 @@
+<IfModule mod_ssl.c>
+        <VirtualHost *:443>
+                ServerAdmin <%= @config['email'] %>
+                ServerName <%= @config['server'] %>
+                ServerAlias <%= @config['alias'] %>
+
+                <Directory <%= @config['rootdir'] %>>
+                  Options Indexes FollowSymLinks MultiViews
+                  AllowOverride None
+                  Require all granted
+                </Directory>
+                <Directory />
+                  Options FollowSymLinks
+                  AllowOverride None
+                </Directory>
+
+                DocumentRoot <%= @config['rootdir'] %>
+
+                ErrorLog <%= @config['errorlog'] %>
+                CustomLog <%= @config['customlog']%>
+
+                SSLEngine on
+
+                SSLCertificateFile      /etc/ssl/certs/<%= @config['id'] %>-ssl.crt
+                SSLCertificateKeyFile /etc/ssl/private/<%= @config['id']%>-ssl.key
+
+                <FilesMatch "\.(cgi|shtml|phtml|php)$">
+                                SSLOptions +StdEnvVars
+                </FilesMatch>
+                <Directory /usr/lib/cgi-bin>
+                                SSLOptions +StdEnvVars
+                </Directory>
+
+                BrowserMatch "MSIE [2-6]" \
+                               nokeepalive ssl-unclean-shutdown \
+                               downgrade-1.0 force-response-1.0
+        </VirtualHost>
+</IfModule>

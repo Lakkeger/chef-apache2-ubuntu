@@ -1,0 +1,10 @@
+{
+  "id": "example.com",
+  "email": "admin@example.com",
+  "server": "example.com",
+  "alias": "www.example.com",
+  "rootdir": "/var/www/html/example.com",
+  "errorlog": "${APACHE_LOG_DIR}/error.log",
+  "customlog": "${APACHE_LOG_DIR}/access.log combined",
+  "https": true
+}

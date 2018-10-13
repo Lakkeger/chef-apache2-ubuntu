@@ -1,0 +1,10 @@
+{
+  "id": "proba.hu",
+  "email": "info@proba.hu",
+  "server": "proba.hu",
+  "alias": "public.proba.hu www.proba.hu",
+  "rootdir": "/var/www/html/proba.hu/public_html",
+  "errorlog": "${APACHE_LOG_DIR}/error.log",
+  "customlog": "${APACHE_LOG_DIR}/access.log combined",
+  "https": false
+}

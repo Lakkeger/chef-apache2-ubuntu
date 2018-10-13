@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+    ServerAdmin <%= @config['email'] %>
+    ServerName <%= @config['server'] %>
+    ServerAlias <%= @config['alias'] %>
+    DocumentRoot <%= @config['rootdir'] %>
+    <Directory />
+      Options FollowSymLinks
+      AllowOverride None
+    </Directory>
+    <Directory <%= @config['rootdir'] %>>
+      Options Indexes FollowSymLinks MultiViews
+      AllowOverride None
+      Require all granted
+    </Directory>
+    <% if !@config['https'].nil? && @config['https'] then %>
+    Redirect "<%= @config['rootdir'] %>" "https://<%= @config['server'] %>/"
+    <% end %>
+    ErrorLog <%= @config['errorlog'] %>
+    CustomLog <%= @config['customlog']%>
+</VirtualHost>

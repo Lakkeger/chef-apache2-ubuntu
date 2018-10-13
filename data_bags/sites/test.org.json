@@ -1,0 +1,10 @@
+{
+  "id": "test.org",
+  "email": "asdasd@gmail.com",
+  "server": "test.org",
+  "alias": "www.test.org",
+  "rootdir": "/var/www/html/test",
+  "errorlog": "${APACHE_LOG_DIR}/error.log",
+  "customlog": "${APACHE_LOG_DIR}/access.log combined",
+  "https": true
+}
